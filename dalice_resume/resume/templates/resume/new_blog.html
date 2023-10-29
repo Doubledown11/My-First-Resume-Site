@@ -1,11 +1,37 @@
 {% extends "resume/blogs_base.html" %}
-{% block content %}     
-<div style="padding:5px; position: relative; top: 25px;"> 
+{% block content %}  
+
+<html lang="en">
+
+    <header>
+
+
+
+    </header>
+
+
+    <body>
+
+        
+        <div style="padding:5px; position: relative; top: 25px;"> 
             <p>Add a new blog Entry:</p>   
-    <form action="{% url 'resume:new_blog' %}" method='post'>
+        <form action="{% url 'resume:new_blog' %}" method='post'>
         {% csrf_token %}     
         {{ form.as_p }}     
         <button name="submit">Add entry</button>     
-    </form>
-</div>
-{% endblock content %}
+        </form>
+        </div>
+
+
+    </body>
+
+
+    <footer>
+
+
+    </footer>
+
+    {% endblock content %}
+
+
+</html>

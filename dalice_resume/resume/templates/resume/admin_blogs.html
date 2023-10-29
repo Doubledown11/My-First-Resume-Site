@@ -1,53 +1,67 @@
-{% extends "resume/blogs_base.html" %}
+{% extends "resume/blogs_base_admin.html" %}
 {% block content %}
 
+<html>
+    <header>
 
-<!-- 
-    I hope to eventually expand this page. 
+        <!-- 
+        I hope to eventually expand this page. 
 
-    I want to include the blog entry names on each of the buttons, 
-    have a view all button which brings the user to a page with a view of all blog entries. Gallery view of blog entries? 
-        Maybe show blog entries within their own div containers? 
-    Have a previous and next page button if the number of blog entries begins to get large.
-    Have filter and sort functionality on the blog entries.
+        I want to include the blog entry names on each of the buttons, 
+        have a view all button which brings the user to a page with a view of all blog entries. Gallery view of blog entries? 
+            Maybe show blog entries within their own div containers? 
+        Have a previous and next page button if the number of blog entries begins to get large.
+        Have filter and sort functionality on the blog entries.-->
 
- -->
-
-
-<div style="color:rgb(8, 8, 8); z-index: 16; top: 20px; font-size: xx-large; position: relative; text-decoration: underline; left: -190px;">
-    <p>Admin for Blog Site:</p> <br>
-</div>
+    </header>
 
 
 
-<div style="z-index: 16; top: -20px; font-size: x-large; position: relative;">
-    <a href="{% url 'resume:new_blog' %}">Add a blog entry</a>
-</div>
+    <body>
+                
+        
+        <div style="color:rgb(8, 8, 8); z-index: 16; top: 20px; font-size: xx-large; position: relative; text-decoration: underline; left: -260px;">
+            <p>Admin for Blog Site:</p> <br>
+        </div>
 
 
 
-<div style="display: flex; flex-direction: column; flex-wrap: wrap; left: 240px; position: relative; width: fit-content;">
-    {% for blog in blogs %}
-    <div class="card" style="width: 800px; height: 300px; margin: 10px">
-        <div class="card-body">
-            <div style="display:flex; flex-direction: row;">
-                <h6 class="card-title" style="position: absolute; font-size:xx-large;color: rgb(0, 0, 0);"> Blog Number {{ blog.id }}</h6> <br>
-                <h6 style="position: relative; font-size: medium; color: grey; top: 50px;"> Date updated: {{ blog.updated_date }} </h6>
-                <p class="card-text" style="position: relative; font-size:medium; color: black; top: 80px; left: -275px; "> {{ blog.body|slice:"50" }} </p>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <a href = "{% url 'resume:blog' blog.id %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); 
-                    color: rgba(244,245,239,255); left: 0px;
-                    z-index: 1; bottom: -200px; position: relative; width: 200px; text-align: left;"> Read More &#8594; </a>
+        <div style="z-index: 16; top: -20px; font-size: x-large; position: relative; left: -400px;">
+            <a href="{% url 'resume:new_blog' %}" style="color: #cd2727;" class="btn btn-dark">Add a blog entry</a>
+        </div>
+
+
+
+        <div style="display: flex; flex-direction: column; flex-wrap: wrap; left: 240px; position: relative; width: fit-content;">
+            {% for blog in blogs %}
+            <div class="card" style="width: 800px; height: 300px; margin: 10px">
+                <div class="card-body">
+                    <div style="display:flex; flex-direction: row;">
+                        <h6 class="card-title" style="position: absolute; font-size:xx-large;color: rgb(0, 0, 0);"> Blog Number {{ blog.id }}</h6> <br>
+                        <h6 style="position: relative; font-size: medium; color: grey; top: 50px;"> Date updated: {{ blog.updated_date }} </h6>
+                        <p class="card-text" style="position: relative; font-size:medium; color: black; top: 80px; left: -275px; "> {{ blog.body|slice:"50" }} </p>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-3">
+                            <a href = "{% url 'resume:blog' blog.id %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); 
+                            color: rgba(244,245,239,255); left: 0px;
+                            z-index: 1; bottom: -200px; position: relative; width: 200px; text-align: left;"> Read More &#8594; </a>
+                        </div>
+                    </div>
                 </div>
             </div>
+            {% empty %} 
+                <body> No Entries Have Been Made Yet!</body>
+            {% endfor %}
         </div>
-    </div>
-    {% empty %} 
-        <body> No Entries Have Been Made Yet!</body>
-    {% endfor %}
-</div>
+
+
+    </body>
+
+
+</html>
+
 {% endblock content %}
 
 

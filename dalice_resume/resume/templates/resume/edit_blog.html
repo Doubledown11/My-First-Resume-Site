@@ -2,12 +2,32 @@
 {% block content %}
 
 
-<p><a href="{% url 'resume:blog' blog.id %}" style="color:rgb(8, 8, 8); z-index: 16; top: 20px; font-size: x-large; position: relative; text-decoration: underline;">Blog Entry Number {{ blog.id }}</a></p> 
+<html>
+    
+    <header>
+        
 
-<p>Edit blog entry:</p>    
-<form action="{% url 'resume:edit_blog' blog.id %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button name="submit">Save changes</button>
-</form>
+        <p><a href="{% url 'resume:blog' blog.id %}" style="color:rgb(8, 8, 8); z-index: 16; top: 20px; font-size: x-large; position: relative; text-decoration: underline;">Blog Entry Number {{ blog.id }}</a></p> 
+
+        <p>Edit blog entry:</p>
+
+        <form action="{% url 'resume:edit_blog' blog.id %}" method='post'>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button name="submit">Save changes</button>
+        </form>
+
+
+    </header>
+
+
+    <body>
+
+
+    </body>
+
+
+</html>
+
+
 {% endblock content %}
