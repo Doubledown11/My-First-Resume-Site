@@ -1,0 +1,363 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<title>Dalice's Resume</title>
+<head>  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Dalice's Resume</title>  
+    
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}"> 
+    <script src="{% static 'bootstrap.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/scrolling.js' %}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>  
+
+
+
+
+<style> 
+    .header { 
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%; /* Adjust height of header */
+        background-color: #969393;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box; 
+    }
+
+    .header-buttons { 
+        z-index: 10;
+        position: relative;
+        float: right;
+    }
+
+    .scrollable-container {
+        height: 410px;
+        width: 900px;
+        overflow: scroll;
+        position: relative;
+        scrollbar-width: auto;
+        padding-bottom: 130px;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        left: 415px;
+    }
+
+    .carousel-item {
+        height: 300px;
+        width: 75%;
+        display: inline-block;
+        position: relative;
+        top: 50px;
+        color: #000;
+        background: #fff;
+        border: 1px solid #ccc; /* add a border to the carousel item */
+        margin-top: 30px;
+        margin-bottom: 30px;
+        /* Must align this to the center of the scrollable container div */
+    }
+
+    .carousel-item:hover {
+        /* Removed box shadow as the background is a blurred image, 
+        and therefore has a better sense of flow without the box shadow border */
+        z-index: 0;
+        position: relative;
+        transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+    }
+
+    .carousel-item.current {
+        height: 300px;
+        width: 90%;
+        top: 0;
+        background: #fff;
+        z-index: 21;
+        border: 2px solid blue; /* add a thicker border to the current carousel item */
+    }
+
+    .carousel-item.above, .carousel-item.below {
+        height: 100px;
+        width: 70%;
+        position: absolute;
+        top: 0;
+        z-index: 20;
+        background: #fff;
+        border: 1px solid #ccc; /* add a border to the above and below carousel items */
+    }
+
+    .carousel-item.above {
+        left: 15%;
+        z-index: 20;
+    }
+
+    .carousel-item.below {
+        right: 15%;
+        z-index: 20;
+
+    }
+
+
+
+    body, html {
+        height: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .bg-image {
+        /* The image used */
+        background-image: url("photographer.jpg");
+
+        /* Add the blur effect */
+        filter: blur(5px);
+        -webkit-filter: blur(5px);
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    /* Position text in the middle of the page/image */
+    .bg-text {
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+        color: white;
+        font-weight: bold;
+        border: 3px solid #f1f1f1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+    }
+    .oval {
+        height: 100px;
+        width: 220px;
+        background-color: #969393;
+        border-radius: 50%;
+        z-index: 50;
+        top: 100px;
+        left: 280px;
+        position: absolute;
+        border-style: dashed;
+        border-color: rgba(244,245,239,255);
+
+    }
+
+
+    .oval p {
+        font-size: 12px;
+        position: relative;
+        top: 30px;
+        color: #000;
+        font-family: 'Garamond';
+
+    }
+</style>
+
+
+
+
+<div class="header">
+    <div class="line" style="z-index: 9; position: relative; top: 20px; border-top: 1px solid; color: #000000; width: 1445px; left: -20px;"></div>
+
+
+    <div class="header-buttons" style="z-index: 10; right: 40px;">
+        <a href = "{% url 'resume:home' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Home</a>
+    </div>
+
+    <div class="oval">
+        
+        <p>
+            Click on the moving windows to stop them! <br> 
+            Double click them to start them again! <br>
+        </p>
+
+    </div>
+    
+    <!-- Maybe add ability to start and stop auto scrolling with mouse click -->
+    <div class="scrollable-container" onmouseenter="startScrolling()" onmouseleave="stopScrolling()" onclick="stopScrolling()" ondblclick="startScrolling()">
+        <div class="carousel-item" style="background-color: #969393; border-color: #969393;">
+            <div class="bg-image" style="background-color: #969393;">
+                <img src="{% static "resume/media/AWS CCP.jpg" %}" alt="image" style="width: 800x; height: 300px;"/>
+            </div>
+
+            <div class="bg-text">
+                <div style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">
+                    <p>AWS Certified Cloud Practitioner </p> <br>
+                    <p>Issue Date: Jan 31, 2023</p> <br>
+                    <p>Expiration Date: Jan 31, 2026</p>
+                </div>
+                    
+            </div>
+
+
+            <!-- Add further certification text class containers here -->
+
+
+        </div>
+    </div>
+
+    <div class="line2" style="z-index: 9; position: relative; top: -390px; border-top: 1px solid; color: #000000; width: 1px; left: 1420px; transform: translateX(5px);" ></div>
+
+</div>
+
+
+
+
+<style> 
+    .sidebar { 
+        position: relative;
+        top: 0px;
+        left: -20px;
+        width: 250px;
+        height: 650px;
+        background-color: rgba(0,0,0,0.7)!important;
+        color: #cd2727;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 2;
+    }
+
+    .container {
+        padding-right: 220px; /* Adjust the padding to make space for the sidebar-style footer */
+    }
+
+    .sidebar-text {
+        margin-top: 400px;
+        font-size: x-large;
+        z-index: 2;
+    }
+</style>
+
+
+
+
+<div class="sidebar">
+
+</div>
+
+
+
+
+
+<body>
+    <style> 
+    .footer { 
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 300px; /* Adjust height of footer */
+        background-color: rgba(244,245,239,255);
+        color: #000000;
+        text-align: right;
+        padding: 20px;
+        position: fixed;
+        left: 0;
+        font-size: small;
+        z-index: 5;
+    }
+
+    .p {
+            margin-bottom: 0.3em;
+
+    } 
+
+    .footer-container {
+        position: relative;
+        z-index: 3;
+    }
+
+    .image {
+        position: absolute;
+        bottom: 0px;
+        left: 0px; /* Adjust the left position as needed */
+        z-index:6;
+    }
+
+    .box {
+        transition: box-shadow .2s;
+        width: 1250px;
+        height: 250px;
+        margin: 50px;
+        border-radius:10px;
+        border: 1px solid rgba(244,245,239,255);
+        background: #fff;
+        float: left;
+        z-index: 11;
+        position: relative;
+        top: -50px;
+        left: 150px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.9); /* Adjust the shadow values */
+
+    }
+
+    .box:hover {
+        box-shadow: 0 0 11px rgba(0, 0, 0, 0.9); 
+        z-index: 11;
+        position: relative;
+
+    }
+
+    .btn-social a {
+        margin-right: 10px;
+        position: relative;
+        right: 25px;
+    }
+    </style>
+
+</body>
+
+<div class="footer-container">
+    <div class="footer">
+        <div class="image">
+            <img src="{% static "resume/svg/Dalice Dieckman (250 × 300 px).svg" %}" alt="SVG Image" />
+        </div>
+
+        <div>
+            <img src="{% static "resume/media/UofA.jpg" %}" alt="Image" style="width: 25px; height: 25px; left: 260px; position: absolute; top: 10px;"/>
+        </div>
+
+        <div class="btn-social">
+            <a href="https://www.linkedin.com/in/dalice-dieckman-7b8864230/" class="fab fa-linkedin fa-lg btn-linkedin" style="color: #000000;"></a>
+            <a href="https://github.com/Doubledown11" class="fab fa-github fa-lg btn-github" style="color: #000000;"></a>
+            <a href="mailto:dalice@ualberta.ca" class="fas fa-envelope fa-lg btn-envelope" style="color: #000000;"></a>
+        </div>
+
+        <div class="line" style="z-index: 20; top: 18px; position: relative; width: 1286px; left: 230px;"></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+
+
+{% block content %} 
+{% endblock content %}
+
+
+
+</html>
+

@@ -1,0 +1,49 @@
+{% extends 'resume/blogs_base.html' %}
+{% block content %}
+
+
+<!-- I want to present all of my blog information within a div container -->
+
+<!-- Maybe try to see what the stack of block entry links would look like as an accordian? 
+        Maybe add an animation to it?
+-->
+
+
+<head> 
+    {% load static %} <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<div style="color:rgb(8, 8, 8); z-index: 16; top: 20px; font-size: x-large; position: relative; text-decoration: underline;">
+</div>
+<!-- 
+<div class="card" style="z-index: 20; width: 205px; height: 200px; position: absolute; top: 100px;">
+    <div class="card-body" style="position: relative;">
+        <center>
+        <div class="card-title" style="position: relative;" s>{{ blog.entry_name }}</div>
+        </center>
+    </div>
+</div> -->
+
+<body style="background-color: rgba(244,245,239,255)">
+
+
+    <div class="card" style="width: 1050px; height: 350px; align-items: center; top: 115px; right: -300px;">
+        <div class="card-body">
+            <h5 class="card-title" style="color: brown; font-size: x-large; position: relative; left: -475px;">{{ blog.entry_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted" style="left: -375px; position: relative;">Created On: {{ blog.created_on }}</h6>
+            <a href="#" class="card-link">{{ blog.body }}</a>
+
+
+
+            <p><a href="{% url 'resume:edit_blog' blog.id %}" style="position: fixed; left: 350px; color: black; bottom: 250px;" class="btn btn-primary"> 
+                <i class="fas fa-pencil-alt" style="color: yellow; position: relative; z-index: 25; display: flexbox; align-items: center; justify-content: center;"></i> Edit
+            </a></p>
+        
+
+        </div>
+    </div>
+
+
+
+</body>
+{% endblock content %}

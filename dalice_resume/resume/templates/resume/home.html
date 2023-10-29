@@ -1,0 +1,265 @@
+<!-- To-Do list: 
+* Fix Z-scores
+* Grow container to size of screen
+* Put picture in about me screen 
+* Put wide angle picture of the edmonton cityscape as a replacement to the gray background??
+
+
+
+* Extend blogs page so that I can see the entire third entry in the list of entries
+
+
+* Add pages for login. 
+* Create an admin account for the website, and one non admin account. 
+
+* Have a sign in button on the top button row?
+* Have the add/create blog section in a seperate template 
+    * Must sign in to admin account to access the blog add/create page 
+    (Will have to look at specific template strcuture for this)
+
+* Have login in / registrate buttons at the top. 
+    * Have those buttons bring you to a seperate page. 
+    * Have a standard template. 
+        * Maybe create this using REACT.
+
+
+
+
+
+-->
+
+
+
+
+
+<!DOCTYPE html>  
+<html lang="en">  
+<title>Dalice's Resume</title>
+<head>  
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Dalice's Resume</title>  
+    
+    {% load static %}  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+</head>  
+
+
+
+
+<style> 
+    .header { 
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 414px; /* Adjust height of header */
+        background-color: #969393;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .header-buttons { 
+        z-index: 10;
+        position: relative;
+        float: right;
+    }
+
+    body{
+        background: #fff;
+    }
+
+    .box {
+        transition: box-shadow .2s;
+        width: 300px;
+        height: 200px;
+        margin: 50px;
+        border-radius:10px;
+        border: 1px solid rgba(244,245,239,255);
+        background: #fff;
+        float: left;
+        z-index: 11;
+        position: relative;
+        top: 75px;
+        left: -15px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.9); /* Adjust the shadow values */
+
+    }
+
+    .box:hover {
+        box-shadow: 0 0 11px rgba(0, 0, 0, 0.9); 
+        z-index: 11;
+        position: relative;
+
+    }
+
+    .image-container { 
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+        margin: auto; 
+        position: relative;
+
+        color: #000000; 
+        z-index: 30; 
+        background-color: #000000;
+
+    }
+
+
+</style>
+
+
+
+
+<div class="header">
+    <!-- Horizontal Line at the top of the page. -->
+    <div class="line" style="z-index: 9; position: relative; top: 20px; border-top: 1px solid; color: #000000; width: 1445px; left: -20px;"></div>
+
+    <div class="header-buttons" style="z-index: 10;">
+        <a href = "{% url 'resume:blogs' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255);">Blog</a>
+        <a href = "{% url 'resume:projects' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Projects</a>
+        <a href = "{% url 'resume:experiences' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255);">Experiences</a>
+        <a href = "{% url 'resume:skills' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255);">Skills</a>
+        <a href = "{% url 'resume:certifications' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255);">Certifications</a>
+        <a href = "{% url 'resume:volunteers' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255);">Volunteer</a>
+    </div>
+<script src="{% static 'static/angularjs/angular.js' %}"></script>
+
+    <!--Vertical Line at the right side of the page.  -->
+    <div class="line2" style="z-index: 9; position: relative; top: 13px; border-top: 1px solid; color: #000000; width: 1px; left: 1450px;" ></div>
+</div>
+
+
+
+
+
+<style> 
+    .sidebar { 
+        position: relative;
+        top: 0;
+        left: 0;
+        width: 250px;
+        height: 650px;
+        background-color: rgba(0,0,0,0.7)!important;
+        color: #cd2727;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 2;
+    }
+
+    .sidebar-container {
+        position: relative;
+        z-index: 2;
+    }
+
+    .sidebar-text {
+        margin-top: 400px;
+        font-size: x-large;
+        z-index: 4;
+    }
+</style>
+
+
+
+
+<div class="sidebar-container">
+    <div class="sidebar">
+        <div class="sidebar-text">Dalice's Resume</div>
+    </div>
+</div> 
+
+
+
+
+
+<body>
+    <style> 
+    .footer { 
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        height: 300px; /* Adjust height of footer */
+        background-color: rgba(244,245,239,255);
+        color: #000000;
+        text-align: right;
+        padding: 20px;
+        position: fixed;
+        left: 0;
+        font-size: small;
+    }
+
+    .p {
+            margin-bottom: 0.3em;
+
+    } 
+
+    .footer-container {
+        position: relative;
+        z-index: 3;
+    }
+
+    .image {
+        position: absolute;
+        bottom: 0px;
+        left: 0px; /* Adjust the left position as needed */
+        z-index:6;
+    }
+
+    .btn-social a {
+        margin-right: 10px;
+        position: relative;
+        right: 25px;
+    }
+    </style>
+
+
+
+
+
+    <div class="footer-container">
+        <div class="footer">
+            <div class="image">
+                <img src="{% static "resume/svg/Dalice Dieckman (250 × 300 px).svg" %}" alt="SVG Image" />
+            </div>
+
+            <div>
+                <img src="{% static "resume/media/UofA.jpg" %}" alt="Image" style="width: 25px; height: 25px; left: 260px; position: absolute; top: 10px;"/>
+            </div>
+
+            <div class="btn-social">
+                <a href="https://www.linkedin.com/in/dalice-dieckman-7b8864230/" class="fab fa-linkedin fa-lg btn-linkedin" style="color: #000000;"></a>
+                <a href="https://github.com/Doubledown11" class="fab fa-github fa-lg btn-github" style="color: #000000;"></a>
+                <a href="mailto:dalice@ualberta.ca" class="fas fa-envelope fa-lg btn-envelope" style="color: #000000;"></a>
+            </div>
+
+            <div class="line" style="z-index: 20; top: 18px; position: relative; width: 1286px; left: 230px;"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+
+{% block content %} 
+{% endblock content %}
+
+
+
+
+
+</html>
+

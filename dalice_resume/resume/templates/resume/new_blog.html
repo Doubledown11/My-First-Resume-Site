@@ -1,0 +1,11 @@
+{% extends "resume/blogs_base.html" %}
+{% block content %}     
+<div style="padding:5px; position: relative; top: 25px;"> 
+            <p>Add a new blog Entry:</p>   
+    <form action="{% url 'resume:new_blog' %}" method='post'>
+        {% csrf_token %}     
+        {{ form.as_p }}     
+        <button name="submit">Add entry</button>     
+    </form>
+</div>
+{% endblock content %}
