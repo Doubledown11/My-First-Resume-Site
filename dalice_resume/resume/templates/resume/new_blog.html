@@ -1,4 +1,4 @@
-{% extends "resume/blogs_base.html" %}
+{% extends "resume/blogs_base_admin.html" %}
 {% block content %}  
 
 <html lang="en">
@@ -12,14 +12,41 @@
 
     <body>
 
+        <div style="color:rgb(8, 8, 8); z-index: 16; top: 30px; font-size: xx-large; position: relative; text-decoration: underline; right: 165px;">
+            <p>Add a new blog Entry:</p> <br>
+        </div>
         
-        <div style="padding:5px; position: relative; top: 25px;"> 
-            <p>Add a new blog Entry:</p>   
-        <form action="{% url 'resume:new_blog' %}" method='post'>
-        {% csrf_token %}     
-        {{ form.as_p }}     
-        <button name="submit">Add entry</button>     
-        </form>
+        <div class="card" style="width: 500px; height: 225px; left: 275px; position: relative; background-color: rgba(244,245,239,255);">
+         
+            <form action="{% url 'resume:new_blog' %}" method='post' style="color: black;">
+                {% csrf_token %}     
+                <div class="container" style="left: 145px; position: relative; top: 25px;">
+                    {{ form.entry_name.label }}    
+                </div> 
+
+                <div class="container" style="right: 40px; position: relative;">
+                    {{ form.entry_name }}    
+                </div> 
+
+                <div class="container" style="left: 125px; position: relative; top: 25px;">
+                    {{ form.body.label }}
+                </div>
+
+                <div class="container" style="right: 40px; position: relative;">
+                    {{ form.body }}    
+                </div>
+
+                <div class="container" style="left: 180px; position: relative; top: 25px;">
+                    {{ form.blog_desc.label }}
+                </div>
+
+                <div class="container" style="right: 40px; position: relative;">
+                    {{ form.blog_desc }}    
+                </div>
+
+                <button class="btn btn-dark" name="submit" style="top: 15px; right: 187px; position: relative;">Add entry</button>     
+            </form>
+
         </div>
 
 

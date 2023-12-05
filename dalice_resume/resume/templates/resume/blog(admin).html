@@ -1,4 +1,4 @@
-{% extends 'resume/blogs_base.html' %}
+{% extends 'resume/blogs_base_admin.html' %}
 {% block content %}
 
 <html>
@@ -61,6 +61,11 @@
                 <h5 class="card-title" style="color: brown; font-size: x-large; position: relative; left: -475px;">{{ blog.entry_name }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted" style="left: -375px; position: relative;">Created On: {{ blog.created_on }}</h6>
                 <a class="card-body" style="font-size: larger; position: relative; color: #000;">{{ blog.body }}</a>
+
+
+                <p><a href="{% url 'resume:edit_blog' blog.id %}" style="position: fixed; left: 350px; color: black; bottom: 250px;" class="btn btn-primary"> 
+                    <i class="fas fa-pencil-alt" style="color: yellow; position: relative; z-index: 25; display: flexbox; align-items: center; justify-content: center;"></i>Edit</a>    
+                </p>
             
 
             </div>

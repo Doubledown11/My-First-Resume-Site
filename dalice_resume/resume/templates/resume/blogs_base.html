@@ -32,7 +32,7 @@
                 top: 0;
                 left: 0;
                 width: 100%;
-                height: 1000; /* Adjust height of header */
+                height: 100%; /* Adjust height of header */
                 background-color: #969393;
                 color: #fff;
                 text-align: center;
@@ -107,16 +107,16 @@
             }
     
             .line2 {
-            background-color: black; /* Use background-color instead of border */
-            z-index: 2;
-            position: fixed;
-            top: 50px;
-            bottom: 0px;
-            border-top: 1px solid;
-            color: #000;
-            width: 1px;
-            left: 1420px;
-            height: 1000px;
+                background-color: black; /* Use background-color instead of border */
+                z-index: 2;
+                position: fixed;
+                top: 50px;
+                bottom: 0px;
+                border-top: 1px solid;
+                color: #000;
+                width: 1px;
+                left: 1420px;
+                height: 1000px;
             }
     
             .line2.scrolled {
@@ -235,27 +235,30 @@
     
     
         </style>
+
+            
+        <div class="header">
+            <div class="line" style="z-index: 9; position: relative; top: 20px; border-top: 1px solid; color: #000000; width: 1445px; left: -20px;"></div>
+            <div class="header-buttons" style="z-index: 10; right: 50px;">
+                <a href = "{% url 'resume:home' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Home</a>
+                {% if user.is_authenticated %} 
+                    <a href = "{% url 'resume:admin_blogs' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Admin</a>
+               
+                {% endif %}
+            </div>
+
+
+            {% block content %} to be overridden
+            {% endblock content %}
+            <!-- Above code is where the various blog pages will load into -->
+        </div>
+
+
     </head>  
 
 
 
     <body>
-
-        <div class="header">
-            <div class="line" style="z-index: 9; position: relative; top: 20px; border-top: 1px solid; color: #000000; width: 1445px; left: -20px;"></div>
-    
-    
-            <div class="header-buttons" style="z-index: 10; right: 40px;">
-                <a href = "{% url 'resume:home' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Home</a>
-                <a href = "{% url 'resume:admin_blogs' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Admin</a>
-            </div>
-    
-    
-            {% block content %} to be overridden
-            {% endblock content %}
-            <!-- Above code is where the various blog pages will load into -->
-        </div>
-    
 
         <section class="scroll_line2">
         
@@ -325,8 +328,6 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     </body>
-
-
 
 
 </html>

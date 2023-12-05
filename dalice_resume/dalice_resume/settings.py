@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'resume'
+    
+    'resume',
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -129,5 +131,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # My settings
 
-
 STATICFILES_DIRS = [join(BASE_DIR, 'static'), ]
+
+
+LOGIN_REDIRECT_URL = '/admin_blogs/'
+
+LOGIN_URL = '/admin_blogs/'

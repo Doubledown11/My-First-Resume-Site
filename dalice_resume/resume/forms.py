@@ -7,5 +7,9 @@ from django.forms import ModelForm, DateInput
 class BlogForm(forms.ModelForm):
     class Meta:
         model = Blog
-        fields = ['body']
-        labels = {'body': 'Enter text'}
+        fields = ['entry_name', 'body', 'blog_desc']
+        labels = {
+            'entry_name' : 'Enter Entry Title',
+            'body': 'Enter text',
+            'blog_desc' : 'Enter a Short Description'
+            }

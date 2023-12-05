@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect, get_object_or_404
 from .models import User, Experience, Skill, Project, Certification, Education, Volunteer, Blog
 from .forms import BlogForm
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 # Create your views here.
 
@@ -65,16 +67,14 @@ def volunteers(request):
 
 # Views for comments
 
-
+@login_required
 def admin_blogs(request): 
     """ A page for blogs to be added by me! """
     blog_list = Blog.objects.order_by('updated_date')
+     
     context = {'blogs' : blog_list}
     return render(request, 'resume/admin_blogs.html', context)
 
-
-
-# @login_required
 def blogs(request): 
     """ A page for blogs to be added by me! """
     blog_list = Blog.objects.order_by('updated_date')
@@ -82,16 +82,33 @@ def blogs(request):
     return render(request, 'resume/blogs.html', context)
 
 
-# @login_required
 def blog(request, blog_ID): 
     """Show a single blog entry, and its contents"""
     blog_ = Blog.objects.get(id=blog_ID)
+    
     context = {'blog': blog_}
     print("Context", context)
     return render(request, 'resume/blog.html', context)
 
+@login_required
+def blogs_admin(request): 
+    """ A page for blogs to be added by me! """
+    blog_list = Blog.objects.order_by('updated_date')
+    context = {'blogs' : blog_list}
+    return render(request, 'resume/blogs(admin).html', context)
 
- # @login_required
+
+@login_required
+def blog_admin(request, blog_ID): 
+    """Show a single blog entry, and its contents"""
+    blog_ = Blog.objects.get(id=blog_ID)
+    
+    context = {'blog': blog_}
+    print("Context", context)
+    return render(request, 'resume/blog(admin).html', context)
+
+
+@login_required
 def new_blog(request): 
     """Add a new entry."""
     if request.method != 'POST': 
@@ -101,20 +118,22 @@ def new_blog(request):
     else: 
     # POST data submitted; process data. 
         form = BlogForm(data = request.POST)
+
         if form.is_valid(): 
-            form.save() 
+            new_blog = form.save(commit=False)
+            new_blog.owner = request.user
+            new_blog.save() 
             return redirect('resume:blogs')
     
-
     # Display a blank or invlaid form. 
     context = {'form': form}
     return render(request, 'resume/new_blog.html', context)
 
 
- # @login_required
+@login_required
 def edit_blog(request, blog_ID):
     """Edit an existing entry."""
-    blog = Blog.objects.get(id=blog_ID)    
+    blog = Blog.objects.get(id=blog_ID)  
 
     if request.method != 'POST':
         # Initial request; pre-fill form with the current entry.
@@ -127,9 +146,33 @@ def edit_blog(request, blog_ID):
             return redirect('resume:blog', blog_ID=blog.id)    
     context = {'blog': blog, 'form': form}
     return render(request, 'resume/edit_blog.html', context)
-                        
 
-######################## ABOVE TO BE UN-HIGHLIGHTED TO WHEN I AM READY TO INTRODUCT FORMS BACK INTO THE DESIGN.
+@login_required
+def delete_blog(request, blog_ID):
+    """Delete an existing blog entry."""
+    # blog = get_object_or_404(Blog, id=blog_ID)
+
+    # if blog == None:
+    #     blog.delete()
+
+    #     blog_ = Blog.objects.get(id=blog_ID)
+    #     context = {'blog': blog_}
+
+    #     return render(request, 'resume/blogs.html', context)
+
+    blog = blog.objects.get(id=blog_ID)
+    blog.delete()
+    return render(request, 'resume/blogs.html')
+
+
+    # if request.method =="POST":
+    #     # delete object
+    #     blog.delete()
+    #     # after deleting redirect to 
+    #     # home page
+    #     return HttpResponseRedirect("/")
+
+######################## ABOVE TO BE UN-HIGHLIGHTED TO WHEN I AM READY TO INTRODUCE FORMS BACK INTO THE DESIGN.
 
 
 # @login_required

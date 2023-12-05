@@ -31,6 +31,9 @@ const handleScrollAnimation = () => {
 
 
 
+
+
+
 // Add an event listener for the scroll event.
 window.addEventListener('scroll', () => {
 
@@ -40,9 +43,6 @@ window.addEventListener('scroll', () => {
         line2.style.top = "50px"
     }
 });
-
-
-
 
 /* Below is the func that measures the distance the user 
 has moved on the page, and determines if is within the range of the line growing function. */
@@ -58,6 +58,17 @@ const elementInView = (el, scrollOffset = 0) => {
 }
 // Above function returns true when the \
 // element (el) has scrolled by scrollOffset px into the page.
+
+
+
+
+
+
+
+
+
+
+
 
 //Applies scrolled to the js-scroll css class.
 const displayScrollElement = () => {

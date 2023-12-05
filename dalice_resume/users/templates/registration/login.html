@@ -1,0 +1,110 @@
+{% extends 'resume/blogs_base_admin.html' %}
+{% block content %}
+
+<html>
+    
+    <head> 
+
+                <!-- I want to present all of my blog information within a div container -->
+
+        <!-- Maybe try to see what the stack of block entry links would look like as an accordian? 
+                Maybe add an animation to it?-->
+
+
+        {% load static %} <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+        
+
+        <style>
+            
+            .sidebar { 
+                position: fixed;
+                top: 0px;
+                left: 0px;
+                width: 250px;
+                height: 600px;
+                background-color: rgba(32, 31, 31, 0.7)!important;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box;
+                z-index: 2;
+                display: block;
+                flex-direction: column;
+            }
+
+            .line2 {
+                background-color: black; /* Use background-color instead of border */
+                z-index: 2;
+                position: fixed;
+                top: 50px;
+                bottom: 0px;
+                border-top: 1px solid;
+                color: #000;
+                width: 1px;
+                left: 1420px;
+                height: 549px;
+            }
+
+            .header { 
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 600px; /* Adjust height of header */
+                background-color: #969393;
+                color: #fff;
+                text-align: center;
+                padding: 20px;
+                box-sizing: border-box; 
+                display: block;
+                flex-direction: column;
+                padding-bottom: 449px;
+            }
+
+        .submit_button:hover {
+            background-color: gray;
+        }
+
+        .card {
+            background-image: linear-gradient(to bottom right,rgb(98, 97, 97), grey);
+        }
+
+        .submit {
+            background-image: linear-gradient(to bottom right, white, rgba(244,245,239,255));
+        }
+
+    
+        </style>
+
+        <div class="sidebar"></div>
+
+
+    </head>
+
+    <body style="background-color: rgba(244,245,239,255);">
+
+        {% if form.errors %}
+            <p>Your username and password did not match. Please try again!</p>
+        {% endif %}
+
+        <form action="{% url 'users:login' %}" method="post" style="left: 20px; top: 165px; position: relative; width: 208px;">
+            <fieldset>
+                {% csrf_token %}
+                <h1><strong style="color: #000; text-align: left; position: absolute; left: 285px; top: -120px; white-space: nowrap;"> Login Form:</strong></h1>
+
+                <div class="card" style="position: relative; top: -25px; right: 0px; border-radius: 10px; border-color: #000; color: gray; width: 700px;">
+
+                    <div class="container" style="left: 55px; top: -50px;  position: relative; height: 280px; border-color: #000; color: gray; width: 200px; max-width: 350px; padding: auto; border-radius: 10px; box-shadow: 0 10px 10px rgba(32, 31, 31, 0.7);">
+                       {{ form.as_p }}
+                        <button type="submit" style="font-size: 30px; font-weight: 600; position: relative; margin: 20px 0 10px 0;width: 208px; left: 0px; top: 0px; padding:5px; background-color: rgb(84, 82, 82); border-radius: 10px; border-color: #000; color: #000;" class="btn btn-secondary">Login</button>
+                        <input type="hidden" name="next" value={{next}} />
+                    </div>
+
+                </div>
+
+            </fieldset>
+        </form>
+    </body>
+
+</html>
+
+{% endblock content %}

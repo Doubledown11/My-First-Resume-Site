@@ -13,6 +13,7 @@
         Have a previous and next page button if the number of blog entries begins to get large.
         Have filter and sort functionality on the blog entries.-->
 
+
     </header>
 
 
@@ -20,14 +21,14 @@
     <body>
                 
         
-        <div style="color:rgb(8, 8, 8); z-index: 16; top: 20px; font-size: xx-large; position: relative; text-decoration: underline; left: -260px;">
+        <div style="color:rgb(8, 8, 8); z-index: 16; top: 30px; font-size: xx-large; position: relative; text-decoration: underline; left: -180px;">
             <p>Admin for Blog Site:</p> <br>
         </div>
 
 
 
         <div style="z-index: 16; top: -20px; font-size: x-large; position: relative; left: -400px;">
-            <a href="{% url 'resume:new_blog' %}" style="color: #cd2727;" class="btn btn-dark">Add a blog entry</a>
+            <a href="{% url 'resume:new_blog' %}" style="color: #cd2727; left: 350px; position: relative; bottom: 55px;" class="btn btn-dark">Add a blog entry</a>
         </div>
 
 
@@ -52,7 +53,7 @@
                 </div>
             </div>
             {% empty %} 
-                <body> No Entries Have Been Made Yet!</body>
+                <div class="container" style="position: relative; left: 25px; color: #000;"> No Entries Have Been Made Yet! <br> I look forward to sharing more of my journey with you!</body>
             {% endfor %}
         </div>
 
