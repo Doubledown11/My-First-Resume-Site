@@ -3,6 +3,7 @@ from .models import User, Experience, Skill, Project, Certification, Education, 
 from .forms import BlogForm
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+from django.urls import reverse 
 
 # Create your views here.
 
@@ -123,7 +124,7 @@ def new_blog(request):
             new_blog = form.save(commit=False)
             new_blog.owner = request.user
             new_blog.save() 
-            return redirect('resume:blogs')
+            return redirect('resume:blogs(admin)')
     
     # Display a blank or invlaid form. 
     context = {'form': form}
@@ -150,19 +151,10 @@ def edit_blog(request, blog_ID):
 @login_required
 def delete_blog(request, blog_ID):
     """Delete an existing blog entry."""
-    # blog = get_object_or_404(Blog, id=blog_ID)
-
-    # if blog == None:
-    #     blog.delete()
-
-    #     blog_ = Blog.objects.get(id=blog_ID)
-    #     context = {'blog': blog_}
-
-    #     return render(request, 'resume/blogs.html', context)
-
-    blog = blog.objects.get(id=blog_ID)
+  
+    blog = Blog.objects.get(id=blog_ID)
     blog.delete()
-    return render(request, 'resume/blogs.html')
+    return redirect(reverse('blogs_admin/'))
 
 
     # if request.method =="POST":

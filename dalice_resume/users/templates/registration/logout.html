@@ -72,10 +72,6 @@
             background-image: linear-gradient(to bottom right, white, rgba(244,245,239,255));
         }
 
-        .password_input {
-
-        }
-
     
         </style>
 
@@ -93,18 +89,15 @@
         <form action="{% url 'users:login' %}" method="post" style="left: 20px; top: 165px; position: relative; width: 208px;">
             <fieldset>
                 {% csrf_token %}
-                <h1><strong style="color: #000; text-align: left; position: absolute; left: 280px; top: -115px; white-space: nowrap;"> Login Form:</strong></h1>
+                <h1><strong style="color: #000; text-align: left; position: absolute; left: 285px; top: -120px; white-space: nowrap;"> Login Form:</strong></h1>
 
-                <div class="card" style="height: 450px; width: 700px; position: relative; top: -65px; left: 280px; border-radius: 10px; border-color: #000; color: gray;">
+                <div class="card" style="position: relative; top: -25px; right: 0px; border-radius: 10px; border-color: #000; color: gray; width: 700px;">
 
-                    <h1 style="bottom: -15px; position: relative; left: -165px; color:black; display: inline-block;"><u> Enter {{ form.username.label }}</u></h1>
-                        <h2 style="bottom: -15px; position: relative; left: -122px;">{{ form.username }}</h2> 
-
-                    <h1 style="bottom: -55px; position: relative; left: -165px; color:black; display: inline-block;"><u>Enter {{ form.password.label }}</u></h1>
-                        <h2 style="bottom: -55px; position: relative; left: -118px;" id="password_input">{{ form.password }}</h2> 
-
-                    <button type="submit" style="font-size: 30px; font-weight: 600; position: relative; margin: 20px 0 10px 0;width: 208px; left: 50px; top: 135px; padding:5px; background-color: rgb(84, 82, 82); border-radius: 10px; border-color: #000; color: #000;" class="btn btn-secondary">Login</button>
-                    <input type="hidden" name="next" value={{next}} />
+                    <div class="container" style="left: 55px; top: -50px;  position: relative; height: 280px; border-color: #000; color: gray; width: 200px; max-width: 350px; padding: auto; border-radius: 10px; box-shadow: 0 10px 10px rgba(32, 31, 31, 0.7);">
+                       {{ form.as_p }}
+                        <button type="submit" style="font-size: 30px; font-weight: 600; position: relative; margin: 20px 0 10px 0;width: 208px; left: 0px; top: 0px; padding:5px; background-color: rgb(84, 82, 82); border-radius: 10px; border-color: #000; color: #000;" class="btn btn-secondary">Login</button>
+                        <input type="hidden" name="next" value={{next}} />
+                    </div>
 
                 </div>
 

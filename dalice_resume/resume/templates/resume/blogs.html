@@ -31,7 +31,7 @@
             <div class="card" style="width: 800px; height: 300px; margin: 10px">
                 <div class="card-body">
                     <div style="display:flex; flex-direction: row;">
-                        <h6 class="card-title" style="position: absolute; font-size:xx-large;color: rgb(0, 0, 0);"> Blog Number {{ blog.id }}</h6> <br>
+                        <h6 class="card-title" style="position: absolute; font-size:xx-large;color: rgb(0, 0, 0);">{{ blog.entry_name }}</h6> <br>
                         <h6 style="position: relative; font-size: medium; color: grey; top: 50px;"> Date updated: {{ blog.updated_date }} </h6>
                         <p class="card-text" style="position: relative; font-size:medium; color: black; top: 80px; left: -275px; "> {{ blog.body|slice:"50" }}</p>
                     </div>

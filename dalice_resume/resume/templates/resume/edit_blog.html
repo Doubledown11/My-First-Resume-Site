@@ -4,17 +4,9 @@
 
 <html>
     
-    <header>
-        
-        <p><a href="{% url 'resume:blog' blog.id %}" style="color:rgb(8, 8, 8); z-index: 16; top: 20px; font-size: x-large; position: relative; text-decoration: underline;">Blog Entry Number {{ blog.id }}</a></p> 
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
-        <p>Edit blog entry:</p>
-
-        <form action="{% url 'resume:edit_blog' blog.id %}" method='post'>
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button name="submit">Save changes</button>
-        </form>
 
         <style>
 
@@ -40,39 +32,42 @@
                 float: right;
             }
 
+            .line2 {
+                background-color: black; /* Use background-color instead of border */
+                z-index: 2;
+                position: fixed;
+                top: 50px;
+                bottom: 0px;
+                border-top: 1px solid;
+                color: #000;
+                width: 1px;
+                left: 1430px;
+                height: 1000px;
+            }
+
         </style>
 
                 
-                            
-        <div class="header">
-            <!-- Horizontal Line at the top of the page. -->
-            <div class="line" style="z-index: 9; position: relative; top: 20px; border-top: 1px solid; color: #000000; width: 1445px; left: -20px;"></div>
+                        
 
-            
-            <div class="header-buttons" style="z-index: 10; right: 40px;">
-                <a href = "{% url 'resume:home' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Home</a>
-                <a href = "{% url 'resume:admin_blogs' %}" class="btn btn-secondary" style="background-color: #969393; box-shadow: 0 0 11px rgba(0, 0, 0, 0.2); color: rgba(244,245,239,255); ">Admin</a>
-            </div>
-        </div>
-
-    </header>
+    </head>
 
     
 
     <body>
         
-        <div class="card" style="width: 1050px; height: 350px; align-items: center; top: -25px; right: -300px;">
+        <div class="card" style="width: 1050px; height: 350px; align-items: center; top: 115px; right: -300px;">
             <div class="card-body">
-                <h5 class="card-title" style="color: brown; font-size: x-large; position: relative; left: -475px;">{{ blog.entry_name }}</h5>
+                <h5 class="card-title" style="color: brown; font-size: x-large; position: relative; left: -300px;">{{ blog.entry_name }}</h5>
                 <h6 class="card-subtitle mb-2 text-muted" style="left: -375px; position: relative;">Created On: {{ blog.created_on }}</h6>
                 <a class="card-body" style="font-size: larger; position: relative; color: #000;">{{ blog.body }}</a>
 
-                <p><a href="{% url 'resume:edit_blog' blog.id %}" style="position: fixed; left: 350px; color: black; bottom: 250px;" class="btn btn-primary"> 
+                <p><a href="{% url 'resume:edit_blog' blog.id %}" style="position: fixed; left: 350px; color: rgb(255, 0, 0); bottom: 250px;" class="btn btn-dark"> 
                     <i class="fas fa-pencil-alt" style="color: yellow; position: relative; z-index: 25; display: flexbox; align-items: center; justify-content: center;"></i> End Edit</a>    
                 </p>
             
-                <p><a href="{% url 'resume:delete_blog' blog.id %}" style="position: fixed; left: 1200px; color: black; bottom: 255px; height: 40px; width: 140px;" class="btn btn-primary" >
-                    <div class="card-text" style="color: #000; position: relative; display: flexbox; align-items: center; justify-content: center;">Delete Blog Entry</p></a>
+                <p><a href="{% url 'resume:delete_blog' blog.id %}" style="position: fixed; left: 1200px; color: rgb(255, 0, 0); bottom: 255px; height: 40px; width: 145px; vertical-align: middle;" class="btn btn-dark" >
+                    <div class="" style="color: #f80303; position: relative; left: 370px; ">Delete Blog Entry</p></a>
                 </p>
 
             </div>

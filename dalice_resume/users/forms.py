@@ -19,6 +19,6 @@ class RegisterForm(UserCreationForm):
 class LoginForm(UserCreationForm):
     class Meta:
         model = User 
-        fields = ['username', 'password1']
-        labels = {'username' : 'Enter your username', 'password1' : 'Enter your password'}
+        fields = ['username', 'password']
+        labels = {'username' : 'Enter Username', 'password' : 'Enter Password'}
         
